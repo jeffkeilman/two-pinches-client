@@ -8,7 +8,9 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
-  user: any
+  user: any;
+
+  isLoggedIn: boolean = false;
 
   constructor(
     private http: Http
@@ -16,6 +18,10 @@ export class AuthService {
 
   getUserToken() {
     return this.user.token
+  }
+
+  getLoggedIn() {
+    return this.isLoggedIn;
   }
 
   signIn(email: string, password: string) {
@@ -31,7 +37,10 @@ export class AuthService {
     this.http.post(environment.apiServer + '/sign-in', credentials)
       .subscribe(
         // Save the response to user
-        response => this.user = JSON.parse(response['_body']).user,
+        response => {
+          this.user = JSON.parse(response['_body']).user
+          this.isLoggedIn = true;
+        },
         err => console.log(err)
       )
   }
@@ -67,7 +76,10 @@ export class AuthService {
     this.http.delete(environment.apiServer + '/sign-out/' + this.user.id, config)
       .subscribe(
         // Remove the logged in user.
-        data => this.user = null,
+        data => {
+          this.user = null;
+          this.isLoggedIn = false;
+        },
         err => console.log(err)
       )
   }
