@@ -11,8 +11,8 @@ export class NavbarComponent implements OnInit {
 
   isLoggedIn: boolean;
 
-  isActive() {
-    console.log('Hello');
+  isActive(arg) {
+    console.log(arg);
   }
 
   constructor(
