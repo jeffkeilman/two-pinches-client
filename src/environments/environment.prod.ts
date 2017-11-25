@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiServer: 'http://localhost:4741'
+  apiServer: 'https://enigmatic-plateau-39282.herokuapp.com/'
 };
