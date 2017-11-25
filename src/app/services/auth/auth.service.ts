@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { environment } from '../../../environments/environment';
 
@@ -10,7 +11,11 @@ import { environment } from '../../../environments/environment';
 export class AuthService {
   user: any;
 
-  isLoggedIn: boolean = false;
+  private loggedIn = new BehaviorSubject<boolean>(false);
+
+  get isLoggedIn() {
+   return this.loggedIn.asObservable();
+  }
 
   constructor(
     private http: Http
@@ -18,10 +23,6 @@ export class AuthService {
 
   getUserToken() {
     return this.user.token
-  }
-
-  getLoggedIn() {
-    return this.isLoggedIn;
   }
 
   signIn(email: string, password: string) {
@@ -39,7 +40,7 @@ export class AuthService {
         // Save the response to user
         response => {
           this.user = JSON.parse(response['_body']).user
-          this.isLoggedIn = true;
+          this.loggedIn.next(true);
         },
         err => console.log(err)
       )
@@ -78,7 +79,7 @@ export class AuthService {
         // Remove the logged in user.
         data => {
           this.user = null;
-          this.isLoggedIn = false;
+          this.loggedIn.next(false);
         },
         err => console.log(err)
       )

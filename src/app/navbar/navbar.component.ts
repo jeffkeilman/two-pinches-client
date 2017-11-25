@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../services/auth/auth.service';
 
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,17 +13,15 @@ import { AuthService } from '../services/auth/auth.service';
 export class NavbarComponent implements OnInit {
 
   isLoggedIn: boolean;
-
-  isActive(arg) {
-    console.log(arg);
-  }
+  subscription: Subscription;
 
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.getLoggedIn();
+    this.subscription = this.authService.isLoggedIn
+      .subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
   }
 
 }

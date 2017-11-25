@@ -5,10 +5,11 @@
     </div>
     <ul class="nav navbar-nav pull-right">
       <!--TODO: Change to routerLinks-->
-      <li [ngClass]="{active: isActive('/')}"><a href="/">Home</a></li>
-      <li [ngClass]="{active: isActive('/restuarants')}"><a href="/restuarants">Restuarants</a></li>
-      <li *ngIf="!isLoggedIn" [ngClass]="{active: isActive('/login')}"><a href="/login">Log In</a></li>
-      <li *ngIf="isLoggedIn"><a href="/">Log Out</a></li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/restuarants">Restuarants</a></li>
+      <li *ngIf="!isLoggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/login">Log In</a></li>
+      <!--Need to fire off function to logout/navigate-->
+      <li *ngIf="isLoggedIn"><a routerLink="/">Log Out</a></li>
     </ul>
   </div>
 </nav>
