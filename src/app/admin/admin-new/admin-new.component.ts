@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../../services/admin/admin.service';
 
-const Noty = require('noty');
-const createDOMPurify = require('dompurify');
+import * as Noty from 'noty';
+import * as createDOMPurify from 'dompurify';
 const DOMPurify = createDOMPurify(window);
 
 @Component({

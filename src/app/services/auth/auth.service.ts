@@ -28,7 +28,11 @@ export class AuthService {
   ) { }
 
   getUserToken() {
-    return this.user.token
+    if (this.user) {
+      return this.user.token;
+    } else {
+      return null;
+    }
   }
 
   signIn(email: string, password: string) {
