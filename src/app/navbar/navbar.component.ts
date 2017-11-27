@@ -13,15 +13,19 @@ import { Subscription } from 'rxjs/Subscription';
 export class NavbarComponent implements OnInit {
 
   isLoggedIn: boolean;
-  subscription: Subscription;
+  isAdmin: boolean;
+  loggedInSubscription: Subscription;
+  adminSubscription: Subscription;
 
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.subscription = this.authService.isLoggedIn
+    this.loggedInSubscription = this.authService.isLoggedIn
       .subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
+    this.adminSubscription = this.authService.isAdmin
+      .subscribe(isAdmin => this.isAdmin = isAdmin);
   }
 
 }

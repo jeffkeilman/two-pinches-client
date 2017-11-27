@@ -12,9 +12,14 @@ export class AuthService {
   user: any;
 
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private admin = new BehaviorSubject<boolean>(false);
 
   get isLoggedIn() {
    return this.loggedIn.asObservable();
+  }
+
+  get isAdmin() {
+    return this.admin.asObservable();
   }
 
   constructor(
@@ -41,6 +46,10 @@ export class AuthService {
         response => {
           this.user = JSON.parse(response['_body']).user
           this.loggedIn.next(true);
+          if (this.user.admin) {
+            // TODO: navigate to admin main page, try to do it in the component
+            this.admin.next(true);
+          }
         },
         err => console.log(err)
       )
@@ -80,6 +89,7 @@ export class AuthService {
         data => {
           this.user = null;
           this.loggedIn.next(false);
+          this.admin.next(false);
         },
         err => console.log(err)
       )
