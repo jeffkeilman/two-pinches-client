@@ -2,8 +2,8 @@ import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Router } from '@angular/router';
 
 import { environment } from '../../../environments/environment';
 
@@ -23,7 +23,8 @@ export class AuthService {
   }
 
   constructor(
-    private http: Http
+    private http : Http,
+    private router : Router
   ) { }
 
   getUserToken() {
@@ -47,8 +48,11 @@ export class AuthService {
           this.user = JSON.parse(response['_body']).user
           this.loggedIn.next(true);
           if (this.user.admin) {
-            // TODO: navigate to admin main page, try to do it in the component
             this.admin.next(true);
+            this.router.navigate(["/admin"]);
+          } else {
+            this.admin.next(false);
+            this.router.navigate(["/"]);
           }
         },
         err => console.log(err)

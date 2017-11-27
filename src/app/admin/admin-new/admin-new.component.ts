@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from '../../services/admin/admin.service';
 
 const Noty = require('noty');
 const createDOMPurify = require('dompurify');
@@ -21,7 +22,10 @@ export class AdminNewComponent implements OnInit {
     featured: false
   };
 
-  constructor(private router : Router) { }
+  constructor(
+    private router : Router,
+    private adminService : AdminService
+  ) { }
 
   ngOnInit() {
   }
@@ -53,7 +57,8 @@ export class AdminNewComponent implements OnInit {
         timeout: 3000
       }).show();
     } else {
-      // do the thing
+      // all set, make the new restaurant!
+      this.adminService.createRestaurant(this.newRestaurant);
     }
   }
 
