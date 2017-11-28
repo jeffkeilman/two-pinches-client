@@ -22,8 +22,8 @@
     <tbody>
       <tr *ngFor="let restaurant of searchRestaurants">
         <td>{{restaurant.name}}</td>
-        <td><button (click)="editItem(restaurant.id);" type="button" class="btn btn-primary">Edit</button></td>
-        <td><button (click)="deleteItem(restaurant.id);" type="button" class="btn btn-primary">Delete</button></td>
+        <td><button (click)="editRestaurant(restaurant.id);" type="button" class="btn btn-primary">Edit</button></td>
+        <td><button (click)="deleteRestaurant(restaurant.id);" type="button" class="btn btn-primary">Delete</button></td>
       </tr>
     </tbody>
   </table>

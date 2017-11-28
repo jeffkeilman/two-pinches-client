@@ -20,7 +20,7 @@ export class AdminService {
 
     if (userToken) {
       const config = {};
-      config['headers'] = { Authorization: 'Token token=' + this.auth.getUserToken()};
+      config['headers'] = { Authorization: 'Token token=' + userToken};
       return this.http.post(environment.apiServer + '/restaurants', newRestaurant, config);
     } else {
       new Noty({
@@ -39,4 +39,26 @@ export class AdminService {
   index() {
     return this.http.get(environment.apiServer + '/restaurants');
   }
+
+  delete(id) {
+    const userToken = this.auth.getUserToken();
+
+    if (userToken) {
+      const config = {};
+      config['headers'] = { Authorization: 'Token token=' + userToken};
+      return this.http.delete(environment.apiServer + '/restaurants/' + id, config)
+    } else {
+      new Noty({
+        type: 'error',
+        text: 'You shouldn\'t be here! Please log in as an admin.',
+        layout: 'topCenter',
+        animation: {
+            open: 'animated bounceInDown',
+            close: 'animated bounceOutUp'
+        },
+        timeout: 3000
+      }).show();
+    }
+  }
+
 }

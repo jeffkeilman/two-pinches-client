@@ -74,4 +74,44 @@ export class AdminMainComponent implements OnInit {
       )
   }
 
+  editRestaurant(id) {
+    console.log(id);
+  }
+
+  deleteRestaurant(id) {
+    this.admin.delete(id)
+      .subscribe(
+        data => {
+          for (let x = 0; x < this.searchRestaurants.length; x++) {
+            if (this.searchRestaurants[x].id === id) {
+              this.searchRestaurants.splice(x, 1);
+              break;
+            }
+          }
+          new Noty({
+            type: 'success',
+            text: 'Deleted the review!',
+            layout: 'topCenter',
+            animation: {
+                open: 'animated bounceInDown',
+                close: 'animated bounceOutUp'
+            },
+            timeout: 3000
+          }).show();
+        },
+        err => {
+          new Noty({
+            type: 'error',
+            text: 'Unable to delete review...',
+            layout: 'topCenter',
+            animation: {
+                open: 'animated bounceInDown',
+                close: 'animated bounceOutUp'
+            },
+            timeout: 3000
+          }).show();
+        }
+      )
+  }
+
 }
