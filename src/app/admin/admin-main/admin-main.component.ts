@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { AdminService } from '../../services/admin/admin.service';
 
+import * as Noty from 'noty';
 import * as createDOMPurify from 'dompurify';
 const DOMPurify = createDOMPurify(window);
 
@@ -13,7 +14,9 @@ const DOMPurify = createDOMPurify(window);
 })
 export class AdminMainComponent implements OnInit {
 
-  newSearch: String = '';
+  searchTerm: string = '';
+  allRestaurants: any = [];
+  searchRestaurants: any = [];
 
   constructor(
     private router : Router,
@@ -24,10 +27,51 @@ export class AdminMainComponent implements OnInit {
   }
 
   onSearch(searchBox) {
-    this.newSearch = DOMPurify.sanitize(this.newSearch);
-    this.newSearch = this.newSearch.trim();
-    this.admin.setSearchTerm(this.newSearch);
-    this.router.navigate(["admin/search"]);
+    this.searchRestaurants = [];
+    this.allRestaurants = [];
+    this.searchTerm = DOMPurify.sanitize(this.searchTerm);
+    this.searchTerm = this.searchTerm.trim();
+
+    this.admin.index()
+      .subscribe(
+        data => {
+          this.allRestaurants = JSON.parse(data['_body']).restaurants;
+          if (!this.searchTerm) {
+            // just return all restaurants
+            this.searchRestaurants = this.allRestaurants.slice();
+          } else {
+            this.allRestaurants.forEach((restaurant) => {
+              if (restaurant.name.search(new RegExp(this.searchTerm, 'i')) >= 0) {
+                this.searchRestaurants.push(restaurant);
+              }
+            })
+          }
+          if (this.searchRestaurants.length === 0) {
+            new Noty({
+              type: 'warning',
+              text: 'No restaurants found with that name...',
+              layout: 'topCenter',
+              animation: {
+                  open: 'animated bounceInDown',
+                  close: 'animated bounceOutUp'
+              },
+              timeout: 3000
+            }).show();
+          }
+        },
+        err => {
+          new Noty({
+            type: 'error',
+            text: 'Unable to grab reviews...',
+            layout: 'topCenter',
+            animation: {
+                open: 'animated bounceInDown',
+                close: 'animated bounceOutUp'
+            },
+            timeout: 3000
+          }).show();
+        }
+      )
   }
 
 }

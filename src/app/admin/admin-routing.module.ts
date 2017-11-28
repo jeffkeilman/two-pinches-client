@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import { AdminNewComponent } from './admin-new/admin-new.component';
-import { AdminSearchComponent } from './admin-search/admin-search.component';
 
 const routes: Routes = [
   {
@@ -13,10 +12,6 @@ const routes: Routes = [
       {
         path: 'new',
         component: AdminNewComponent
-      },
-      {
-        path: 'search',
-        component: AdminSearchComponent
       }
     ]
   }

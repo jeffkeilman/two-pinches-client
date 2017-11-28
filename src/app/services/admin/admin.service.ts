@@ -9,20 +9,11 @@ import * as Noty from 'noty';
 @Injectable()
 export class AdminService {
 
-  searchTerm: string = '';
 
   constructor(
     private auth : AuthService,
     private http : Http
   ) { }
-
-  setSearchTerm(searchTerm) {
-    this.searchTerm = searchTerm;
-  }
-
-  getSearchTerm() {
-    return this.searchTerm;
-  }
 
   createRestaurant(newRestaurant) {
     const userToken = this.auth.getUserToken();
