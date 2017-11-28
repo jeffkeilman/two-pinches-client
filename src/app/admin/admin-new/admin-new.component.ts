@@ -58,7 +58,34 @@ export class AdminNewComponent implements OnInit {
       }).show();
     } else {
       // all set, make the new restaurant!
-      this.adminService.createRestaurant(this.newRestaurant);
+      this.adminService.createRestaurant(this.newRestaurant)
+        .subscribe(
+          data => {
+            new Noty({
+              type: 'success',
+              text: 'New review added!',
+              layout: 'topCenter',
+              animation: {
+                  open: 'animated bounceInDown',
+                  close: 'animated bounceOutUp'
+              },
+              timeout: 3000
+            }).show();
+            this.router.navigate(["/admin"]);
+          },
+          err => {
+            new Noty({
+              type: 'error',
+              text: 'Couldn\'t add new review...',
+              layout: 'topCenter',
+              animation: {
+                  open: 'animated bounceInDown',
+                  close: 'animated bounceOutUp'
+              },
+              timeout: 3000
+            }).show();
+          }
+        );
     }
   }
 
