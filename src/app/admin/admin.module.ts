@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import { AdminNewComponent } from './admin-new/admin-new.component';
+import { AdminEditComponent } from './admin-edit/admin-edit.component';
+import { AdminSearchComponent } from './admin-search/admin-search.component';
 
 import { AdminService } from '../services/admin/admin.service';
 
@@ -16,7 +18,9 @@ import { AdminService } from '../services/admin/admin.service';
   ],
   declarations: [
     AdminMainComponent,
-    AdminNewComponent
+    AdminNewComponent,
+    AdminEditComponent,
+    AdminSearchComponent
   ],
   providers: [ AdminService ]
 })
