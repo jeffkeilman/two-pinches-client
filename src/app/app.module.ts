@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { AdminModule } from './admin/admin.module';
+import { RestaurantModule } from './restaurant/restaurant.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -31,6 +32,7 @@ import { NgbdCarouselConfig } from './carousel-config/carousel-config.component'
     AppRoutingModule,
     AdminRoutingModule,
     AdminModule,
+    RestaurantModule,
     NgbModule.forRoot()
   ],
   providers: [AuthService, RestaurantService],
