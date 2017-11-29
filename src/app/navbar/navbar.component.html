@@ -9,7 +9,7 @@
       <li *ngIf="!isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/restuarants">Restuarants</a></li>
       <li *ngIf="!isLoggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/login">Log In</a></li>
       <!--Need to fire off function to logout/navigate-->
-      <li *ngIf="isLoggedIn"><a routerLink="/">Log Out</a></li>
+      <li (click)="logOut();" *ngIf="isLoggedIn"><a>Log Out</a></li>
     </ul>
   </div>
 </nav>

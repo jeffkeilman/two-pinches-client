@@ -98,6 +98,7 @@ export class AuthService {
           this.user = null;
           this.loggedIn.next(false);
           this.admin.next(false);
+          this.router.navigate(["/"]);
         },
         err => console.log(err)
       )

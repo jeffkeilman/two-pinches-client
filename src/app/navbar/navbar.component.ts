@@ -27,4 +27,8 @@ export class NavbarComponent implements OnInit {
       .subscribe(isAdmin => this.isAdmin = isAdmin);
   }
 
+  logOut() {
+    this.authService.signOut();
+  }
+
 }
