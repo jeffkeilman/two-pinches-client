@@ -1,48 +1,54 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12"><h3>Add Review</h3></div>
-    <form #myForm="ngForm">
-      <div class="col-xs-12">
-        <input name="name" id="name" [(ngModel)]="newRestaurant.name" class="form-control" placeholder="Restaurant Name" type="text">
-      </div>
-      <div class="col-xs-12">
-        <input name="address" id="address" [(ngModel)]="newRestaurant.address" class="form-control" placeholder="Restaurant Address" type="text">
-      </div>
-      <div class="col-xs-12">
-        <input name="pic_url" id="pic_url" [(ngModel)]="newRestaurant.pic_url" class="form-control" placeholder="Picture URL" type="text">
-      </div>
-      <div class="col-xs-12"><h4>Pinches</h4></div>
-      <div class="col-xs-12 col-md-1">
-        <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <input name="hack1" [(ngModel)]="newRestaurant.rating" class="form-check-input" value="0" type="radio"> 0
-          </label>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-1">
-        <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <input name="hack2" [(ngModel)]="newRestaurant.rating" class="form-check-input" value="1" type="radio"> 1
-          </label>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-1">
-        <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <input name="hack3" [(ngModel)]="newRestaurant.rating" class="form-check-input" value="2" type="radio"> 2
-          </label>
-        </div>
-      </div>
-      <div class="col-xs-12">
-        <h4>Featured</h4>
-        <input name="featured" id="featured" [(ngModel)]="newRestaurant.featured" type="checkbox" class="form-check-input">
-      </div>
-      <div class="col-xs-12">
-        <h4>Review</h4>
-        <textarea name="description" id="description" [(ngModel)]="newRestaurant.description" class="form-control" rows="5"></textarea>
-        <input (click)="addRestaurant(myForm);" type="button" class="btn btn-primary" value="Submit">
-        <button (click)="cancelAdd();" type="button" class="btn btn-info">Cancel</button>
-      </div>
-    </form>
+    <h3>Add Review</h3>
   </div>
+  <form #myForm="ngForm">
+    <div class="row">
+      <input name="name" id="name" [(ngModel)]="newRestaurant.name" class="form-control"
+      placeholder="Restaurant Name" type="text">
+    </div>
+    <div class="row">
+      <input name="address" id="address" [(ngModel)]="newRestaurant.address"
+        class="form-control" placeholder="Restaurant Address" type="text">
+    </div>
+    <div class="row">
+      <input name="pic_url" id="pic_url" [(ngModel)]="newRestaurant.pic_url"
+      class="form-control" placeholder="Picture URL" type="text">
+    </div>
+    <div class="row">
+      <h4>Pinches</h4>
+    </div>
+    <div class="row">
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+        <input name="hack1" [(ngModel)]="newRestaurant.rating" class="form-check-input"
+          value="0" type="radio">0</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+        <input name="hack2" [(ngModel)]="newRestaurant.rating" class="form-check-input"
+          value="1" type="radio">1</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+        <input name="hack3" [(ngModel)]="newRestaurant.rating" class="form-check-input"
+          value="2" type="radio">2</label>
+      </div>
+    </div>
+    <div class="row">
+      <label class="form-check-label">
+        <input name="featured" id="featured" [(ngModel)]="newRestaurant.featured"
+          type="checkbox" class="form-check-input">
+        Featured
+      </label>
+    </div>
+    <div class="row">
+      <h4>Review</h4>
+      <textarea name="description" id="description" [(ngModel)]="newRestaurant.description"
+        class="form-control" rows="5"></textarea>
+      <input (click)="addRestaurant(myForm);" type="button" class="btn btn-primary"
+        value="Submit">
+      <button (click)="cancelAdd();" type="button" class="btn btn-info">Cancel</button>
+    </div>
+  </form>
 </div>

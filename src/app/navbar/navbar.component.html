@@ -1,15 +1,17 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Two Pinches</a>
-    </div>
-    <ul class="nav navbar-nav pull-right">
-      <!--TODO: Change to routerLinks-->
-      <li *ngIf="!isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
-      <li *ngIf="!isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/restuarants">Restuarants</a></li>
-      <li *ngIf="!isLoggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/login">Log In</a></li>
-      <!--Need to fire off function to logout/navigate-->
-      <li (click)="logOut();" *ngIf="isLoggedIn"><a>Log Out</a></li>
-    </ul>
-  </div>
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm"> <a class="navbar-brand" href="#">Two Pinches</a>
+  <ul class="nav navbar-nav float-right">
+    <li *ngIf="!isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+      <a routerLink="/home" class="nav-link">Home</a>
+    </li>
+    <li *ngIf="!isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+      <a routerLink="/restuarants" class="nav-link">Restuarants</a>
+    </li>
+    <li *ngIf="!isLoggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+      <a routerLink="/login" class="nav-link">Log In</a>
+    </li>
+    <!--Need to fire off function to logout/navigate-->
+    <li (click)="logOut();" *ngIf="isLoggedIn" class="nav-item">
+      <a class="nav-link">Log Out</a>
+    </li>
+  </ul>
 </nav>

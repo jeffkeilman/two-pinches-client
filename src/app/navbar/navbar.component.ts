@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
     this.loggedInSubscription = this.authService.isLoggedIn
       .subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
     this.adminSubscription = this.authService.isAdmin
-      .subscribe(isAdmin => this.isAdmin = isAdmin);
+      .subscribe(isAdmin => this.isAdmin = isAdmin );
   }
 
   logOut() {
