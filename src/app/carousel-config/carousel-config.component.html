@@ -1,24 +1,11 @@
 <div class="container">
   <ngb-carousel>
-    <ng-template ngbSlide>
-      <img src="https://i.imgur.com/8zbsINp.jpg?1" alt="Random first slide">
+    <ng-template ngbSlide *ngFor="let restaurant of featuredRestaurants">
+      <img src="{{restaurant.pic_url}}" alt="{{restaurant.name}}">
       <div class="carousel-caption">
-        <h3>10 seconds between slides...</h3>
-        <p>This carousel uses customized default values.</p>
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <img src="https://i.imgur.com/jVtPMe8.jpg"  alt="Random second slide">
-      <div class="carousel-caption">
-        <h3>No keyboard...</h3>
-        <p>This carousel uses customized default values.</p>
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <img src="https://lorempixel.com/900/500?r=6" alt="Random third slide">
-      <div class="carousel-caption">
-        <h3>And no wrap after last slide.</h3>
-        <p>This carousel uses customized default values.</p>
+        <h1><a routerLink="/restaurants/{{restaurant.id}}">{{restaurant.name}}</a></h1>
+        <!-- TODO: come back and make this the pics -->
+        <h2>{{restaurant.rating}}</h2>
       </div>
     </ng-template>
   </ngb-carousel>

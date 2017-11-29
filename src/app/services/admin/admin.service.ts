@@ -35,14 +35,6 @@ export class AdminService {
     }
   }
 
-  show(id) {
-    return this.http.get(environment.apiServer + '/restaurants/' + id);
-  }
-
-  index() {
-    return this.http.get(environment.apiServer + '/restaurants');
-  }
-
   delete(id) {
     const userToken = this.auth.getUserToken();
 

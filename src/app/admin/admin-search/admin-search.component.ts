@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AdminService } from '../../services/admin/admin.service';
+import { RestaurantService } from '../../services/restaurant/restaurant.service';
 
 import * as Noty from 'noty';
 import * as createDOMPurify from 'dompurify';
@@ -20,7 +21,8 @@ export class AdminSearchComponent implements OnInit {
 
   constructor(
     private admin : AdminService,
-    private router : Router
+    private router : Router,
+    private restaurantService : RestaurantService
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class AdminSearchComponent implements OnInit {
     this.searchTerm = DOMPurify.sanitize(this.searchTerm);
     this.searchTerm = this.searchTerm.trim();
 
-    this.admin.index()
+    this.restaurantService.index()
       .subscribe(
         data => {
           this.allRestaurants = JSON.parse(data['_body']).restaurants;

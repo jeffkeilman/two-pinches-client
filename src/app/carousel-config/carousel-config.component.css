@@ -1,4 +1,13 @@
+a {
+  color: white;
+  text-decoration: none; /* no underline */
+}
+
+a:hover {
+  font-size: 50px;
+}
+
 img {
-  height: 1110px;
-  width: 833px;
+  height: 833px;
+  width: 1110px;
 }

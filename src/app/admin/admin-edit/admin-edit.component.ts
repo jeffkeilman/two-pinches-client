@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';;
 
 import { AdminService } from '../../services/admin/admin.service';
+import { RestaurantService } from '../../services/restaurant/restaurant.service';
 
 import * as Noty from 'noty';
 import * as createDOMPurify from 'dompurify';
@@ -19,13 +20,14 @@ export class AdminEditComponent implements OnInit {
   constructor(
     private route : ActivatedRoute,
     private router : Router,
-    private adminService : AdminService
+    private adminService : AdminService,
+    private restaurantService : RestaurantService
   ) { }
 
   ngOnInit() {
     this.route.params.forEach(param => {
       if (param.id) {
-        this.adminService.show(param.id)
+        this.restaurantService.show(param.id)
           .subscribe(
             data => {
               this.editRestaurant = JSON.parse(data['_body']).restaurant;

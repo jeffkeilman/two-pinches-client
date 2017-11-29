@@ -11,6 +11,7 @@ import { AdminModule } from './admin/admin.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth/auth.service';
+import { RestaurantService } from './services/restaurant/restaurant.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NgbdCarouselConfig } from './carousel-config/carousel-config.component';
@@ -32,7 +33,7 @@ import { NgbdCarouselConfig } from './carousel-config/carousel-config.component'
     AdminModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [AuthService, RestaurantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
