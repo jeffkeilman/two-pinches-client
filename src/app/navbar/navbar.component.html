@@ -4,7 +4,7 @@
       <a routerLink="/home" class="nav-link">Home</a>
     </li>
     <li *ngIf="!isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
-      <a routerLink="/restuarants" class="nav-link">Restuarants</a>
+      <a routerLink="/restaurants" class="nav-link">Restuarants</a>
     </li>
     <li *ngIf="!isLoggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
       <a routerLink="/login" class="nav-link">Log In</a>

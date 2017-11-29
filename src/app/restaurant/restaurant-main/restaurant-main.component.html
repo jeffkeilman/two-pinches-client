@@ -1,0 +1,70 @@
+<div class="container mt-2">
+  <h1>All these reviews...</h1>
+  <a href="#myModal" data-toggle="modal">What?</a>
+  <div *ngIf="restaurants.length > 0" class="mt-2">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let restaurant of restaurants">
+          <td><a routerLink="restaurants/{{restaurant.id}}">{{restaurant.name}}</a></td>
+          <td>{{restaurant.address}}</td>
+          <td>{{restaurant.rating}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- This modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">What?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Perhaps a quick word of warning. Do you like the 5-star rating system?
+          <span class="font-weight-bold">This site isn't for you!</span> If, however,
+          you are like me, you've probably spent hours staring at 3-star reviews on Yelp,
+          wondering why some people think the food at any given place is the best while
+          others curse its very existence... <span class="font-weight-bold">How am I supposed
+          to know the truth? Can I handle the truth? Is there truth?</span> And
+          what's an acceptable rating? Are 3 stars enough? 4?
+          <span class="font-weight-bold">Whhhhhhyyyyy?</span> Anyway, you might enjoy this site.
+        <p>
+          While we are on this subject, let's talk about choices. How many hours have
+          you spent searching for food? Searching for places to eat, arguing about the
+          best places to eat, walking past places and hoping they have good food...?
+          In the immortal words of George Carlin: "too many choices America. It's not healthy."
+          So, guess what? This site takes out the guess work.
+          <span class="font-weight-bold">All you have to do is unequivocally trust me.</span>
+          Why bother with finding a place to eat? I've done it for you. Just eat where I eat.
+        </p>
+        <p>
+          Oh, and if you were wondering what I mean by "two pinches," I mean
+          the thing Italian grandmothers do. You know,
+           <a href="https://italianproblems.files.wordpress.com/2013/10/finger-purse.jpg?w=240" target="_blank">this</a>.
+          With all of that out of the way, allow me to explain these ratings:
+        </p>
+        <ol>
+          <li>0 Pinches = I wouldn't eat there again. Is it good? Maybe. I don't know.</li>
+          <li>1 Pinch = I would eat there again. Most restaurants will fall into this category.</li>
+          <li>2 Pinches = I would eat there every day (not really but kind of). The best restaurants I have been to.</li>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
