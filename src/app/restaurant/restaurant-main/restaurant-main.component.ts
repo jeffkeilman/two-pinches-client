@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { RestaurantService } from '../../services/restaurant/restaurant.service';
+import * as Noty from 'noty';
 
 @Component({
   selector: 'app-restaurant-main',

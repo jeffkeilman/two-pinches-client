@@ -69,6 +69,16 @@ export class AuthService {
             this.admin.next(false);
             this.router.navigate(["/"]);
           }
+          new Noty({
+            type: 'error',
+            text: 'Signed in!',
+            layout: 'topCenter',
+            animation: {
+                open: 'animated bounceInDown',
+                close: 'animated bounceOutUp'
+            },
+            timeout: 3000
+          }).show();
         },
         err => {
           new Noty({

@@ -37,7 +37,6 @@ export class RestaurantShowComponent implements OnInit {
           .subscribe(
             data => {
               this.restaurant = data.json().restaurant;
-              console.log(this.restaurant.comments);
               this.userEmail = this.authService.getUserEmail();
               if (this.userEmail) { this.isLoggedIn = true; }
               this.mapComments();
