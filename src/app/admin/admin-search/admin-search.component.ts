@@ -28,7 +28,7 @@ export class AdminSearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSearch(searchBox) {
+  onSearch() {
     this.searchRestaurants = [];
     this.allRestaurants = [];
     this.searchTerm = DOMPurify.sanitize(this.searchTerm);
