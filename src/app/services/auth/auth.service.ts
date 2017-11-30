@@ -38,6 +38,14 @@ export class AuthService {
     }
   }
 
+  getUserEmail() {
+    if(this.user) {
+      return this.user.email;
+    } else {
+      return null;
+    }
+  }
+
   signIn(email: string, password: string, form: any) {
     // Create the credentials object.
     let credentials = {
@@ -162,4 +170,5 @@ export class AuthService {
     // Make the patch request to URL, add the password data and token from Config.
     return this.http.patch(environment.apiServer + '/change-password/' + this.user.id, passwords, config);
   }
+
 }

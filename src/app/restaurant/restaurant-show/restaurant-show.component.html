@@ -8,5 +8,44 @@
   <img *ngIf="restaurant.rating == 0" src="https://i.imgur.com/2IYeyI7.png" alt="left pinch">
   <img *ngIf="restaurant.rating == 0" src="https://i.imgur.com/o9XePUS.png" alt="right pinch">
   <div [innerHTML]="restaurant.description" class="mt-2"></div>
+  <div *ngIf="restaurantComments.length > 0">
+    <table class="table table-light">
+      <tbody>
+        <tr *ngFor="let comment of restaurantComments">
+          <td>{{comment.user}}</td>
+          <td>{{comment.text}}</td>
+          <td *ngIf="comment.isOwner || isAdmin">
+            <button (click)="editComment(comment._id);" type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+            <button (click)="deleteComment(comment._id);" type="button" class="btn btn-danger">Delete</button>
+          </td>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="isLoggedIn">
+    <form #myForm="ngForm">
+      <textarea name="hack1" [(ngModel)]="newComment" class="form-control" rows="2" placeholder="New comment..."></textarea>
+      <input name="hack2" (click)="addNewComment(myForm);" type="submit" value="Add Comment">
+    </form>
+  </div>
   <a class="pb-3" routerLink="/restaurants">Go back...</a>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalTitle">Edit your comment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea [(ngModel)]="selectedComment.text" class="form-control" rows="5" id="comment"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="saveEdit();" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
