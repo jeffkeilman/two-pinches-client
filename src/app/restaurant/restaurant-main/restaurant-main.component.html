@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let restaurant of restaurants">
-          <td><a routerLink="restaurants/{{restaurant.id}}">{{restaurant.name}}</a></td>
+          <td><a routerLink="{{restaurant.id}}">{{restaurant.name}}</a></td>
           <td>{{restaurant.address}}</td>
           <td>{{restaurant.rating}}</td>
         </tr>

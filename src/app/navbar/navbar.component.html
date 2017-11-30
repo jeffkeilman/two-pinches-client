@@ -3,7 +3,7 @@
     <li *ngIf="!isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
       <a routerLink="/home" class="nav-link">Home</a>
     </li>
-    <li *ngIf="!isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+    <li *ngIf="!isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}" class="nav-item">
       <a routerLink="/restaurants" class="nav-link">Restuarants</a>
     </li>
     <li *ngIf="!isLoggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">

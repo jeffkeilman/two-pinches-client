@@ -20,7 +20,6 @@ export class RestaurantMainComponent implements OnInit {
       .subscribe(
         data => {
           this.restaurants = JSON.parse(data['_body']).restaurants;
-          console.log(this.restaurants);
         },
         err => {
           new Noty({
