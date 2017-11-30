@@ -1,8 +1,12 @@
 <div class="container">
   <h1 class="mt-2">{{restaurant.name}}</h1>
-  <img src="{{restaurant.pic_url}}" alt="{{restaurant.name}} pic">
+  <img class="restaurant-pic" src="{{restaurant.pic_url}}" alt="{{restaurant.name}} pic">
   <h5>{{restaurant.address}}</h5>
-  <h5>Rating: {{restaurant.rating}} pinch(es)</h5>
-  <div [innerHTML]="restaurant.description"></div>
+  <h5>Rating: {{restaurant.rating}}</h5>
+  <img *ngIf="restaurant.rating == 1 || restaurant.rating == 2" src="https://i.imgur.com/qi2P2Ui.gif" alt="left pinch">
+  <img *ngIf="restaurant.rating == 2" src="https://i.imgur.com/2upbbdV.gif" alt="right pinch">
+  <img *ngIf="restaurant.rating == 0" src="https://i.imgur.com/2IYeyI7.png" alt="left pinch">
+  <img *ngIf="restaurant.rating == 0" src="https://i.imgur.com/o9XePUS.png" alt="right pinch">
+  <div [innerHTML]="restaurant.description" class="mt-2"></div>
   <a class="pb-3" routerLink="/restaurants">Go back...</a>
 </div>

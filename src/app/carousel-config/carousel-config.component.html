@@ -1,11 +1,13 @@
 <div class="container">
   <ngb-carousel>
     <ng-template ngbSlide *ngFor="let restaurant of featuredRestaurants">
-      <img src="{{restaurant.pic_url}}" alt="{{restaurant.name}}">
+      <img class="restaurant-pic" src="{{restaurant.pic_url}}" alt="{{restaurant.name}}">
       <div class="carousel-caption">
         <h1><a routerLink="/restaurants/{{restaurant.id}}">{{restaurant.name}}</a></h1>
-        <!-- TODO: come back and make this the pics -->
-        <h2>{{restaurant.rating}}</h2>
+        <img class="pinches" *ngIf="restaurant.rating == 1 || restaurant.rating == 2" src="https://i.imgur.com/B5cvvIw.gif" alt="left pinch">
+        <img class="pinches" *ngIf="restaurant.rating == 2" src="https://i.imgur.com/xjKBKxD.gif" alt="right pinch">
+        <img class="pinches" *ngIf="restaurant.rating == 0" src="https://i.imgur.com/2IYeyI7.png" alt="left pinch">
+        <img class="pinches" *ngIf="restaurant.rating == 0" src="https://i.imgur.com/o9XePUS.png" alt="right pinch">
       </div>
     </ng-template>
   </ngb-carousel>

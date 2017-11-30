@@ -7,7 +7,12 @@ a:hover {
   font-size: 50px;
 }
 
-img {
+.pinches {
+  height: 100px;
+  width: 100px;
+}
+
+.restaurant-pic {
   height: 833px;
   width: 1110px;
 }
