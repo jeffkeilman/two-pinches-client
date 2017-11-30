@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+
 import { AuthService } from '../../services/auth/auth.service';
 
 import * as Noty from 'noty';
@@ -11,12 +14,24 @@ import * as Noty from 'noty';
 export class ChangePasswordComponent implements OnInit {
 
   // Not bound to multiple inputs, no object needed
-  oldPassword: string
-  newPassword: string
+  oldPassword: string;
+  newPassword: string;
+  isLoggedIn: boolean;
+  loggedInSubscription: Subscription;
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth : AuthService,
+    private router : Router
+  ) { }
 
   ngOnInit() {
+    this.loggedInSubscription = this.auth.isLoggedIn
+      .subscribe(isLoggedIn => {
+        this.isLoggedIn = isLoggedIn;
+        if (!this.isLoggedIn) {
+          this.router.navigate(["/"]);
+        }
+      });
   }
 
   changePassword(myForm) {
