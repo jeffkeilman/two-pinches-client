@@ -35,7 +35,6 @@ export class NgbdCarouselConfig implements OnInit {
           this.featuredRestaurants = this.allRestaurants.filter((restaurant) => {
             return restaurant.featured === true;
           })
-          console.log(this.featuredRestaurants);
         },
         err => {
           new Noty({

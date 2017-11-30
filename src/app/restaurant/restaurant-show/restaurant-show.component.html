@@ -3,6 +3,6 @@
   <img src="{{restaurant.pic_url}}" alt="{{restaurant.name}} pic">
   <h5>{{restaurant.address}}</h5>
   <h5>Rating: {{restaurant.rating}} pinches</h5>
-  <p>{{restaurant.description}}</p>
+  <div [innerHTML]="restaurant.description"></div>
   <a class="pb-3" routerLink="/restaurants">Go back...</a>
 </div>

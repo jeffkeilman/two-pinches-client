@@ -1,0 +1,13 @@
+<div class="container mt-2">
+  <div class="row">
+    <h3>Sign In</h3>
+  </div>
+  <div class="row">
+    <input [(ngModel)]="user.email" type="text" placeholder="Email"/>
+    <input [(ngModel)]="user.password" type="password" placeholder="Password"/>
+    <input (click)="signIn()" type="submit" value="Log in"/>
+  </div>
+  <div class="row">
+    <a routerLink="/register">No account?</a>
+  </div>
+</div>

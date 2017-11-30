@@ -9,10 +9,10 @@ import { AdminRoutingModule } from './admin/admin-routing.module';
 import { AdminModule } from './admin/admin.module';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { RestaurantRoutingModule } from './restaurant/restaurant-routing.module';
+import { AuthModule } from './auth/auth.module';
+import { AuthRoutingModule } from './auth/auth-routing.module';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AuthService } from './services/auth/auth.service';
 import { RestaurantService } from './services/restaurant/restaurant.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -21,7 +21,6 @@ import { NgbdCarouselConfig } from './carousel-config/carousel-config.component'
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NavbarComponent,
     HomeComponent,
     NgbdCarouselConfig
@@ -35,9 +34,11 @@ import { NgbdCarouselConfig } from './carousel-config/carousel-config.component'
     AdminModule,
     RestaurantModule,
     RestaurantRoutingModule,
+    AuthModule,
+    AuthRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthService, RestaurantService],
+  providers: [RestaurantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

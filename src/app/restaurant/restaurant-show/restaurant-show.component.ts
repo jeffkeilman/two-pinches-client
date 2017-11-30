@@ -24,7 +24,6 @@ export class RestaurantShowComponent implements OnInit {
     // COME BACK TO ME
     this.route.params.forEach((param) => {
       if (param.id) {
-        console.log(param.id);
         this.restaurantService.show(param.id)
           .subscribe(
             data => {

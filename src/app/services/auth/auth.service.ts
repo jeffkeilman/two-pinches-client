@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 
 import { environment } from '../../../environments/environment';
 
+import * as Noty from 'noty';
+import * as createDOMPurify from 'dompurify';
+const DOMPurify = createDOMPurify(window);
+
 @Injectable()
 export class AuthService {
   user: any;
@@ -58,7 +62,18 @@ export class AuthService {
             this.router.navigate(["/"]);
           }
         },
-        err => console.log(err)
+        err => {
+          new Noty({
+            type: 'error',
+            text: 'Couldn\'t sign in...',
+            layout: 'topCenter',
+            animation: {
+                open: 'animated bounceInDown',
+                close: 'animated bounceOutUp'
+            },
+            timeout: 3000
+          }).show();
+        }
       )
   }
 
@@ -79,7 +94,18 @@ export class AuthService {
           // Send the existing credentials back to the server to log in the new user
           this.signIn(credentials.credentials.email, credentials.credentials.password)
         },
-        err => console.log(err)
+        err => {
+          new Noty({
+            type: 'error',
+            text: 'Couldn\'t sign up...',
+            layout: 'topCenter',
+            animation: {
+                open: 'animated bounceInDown',
+                close: 'animated bounceOutUp'
+            },
+            timeout: 3000
+          }).show();
+        }
       )
   }
 
@@ -99,7 +125,18 @@ export class AuthService {
           this.admin.next(false);
           this.router.navigate(["/"]);
         },
-        err => console.log(err)
+        err => {
+          new Noty({
+            type: 'error',
+            text: 'Couldn\'t log out...',
+            layout: 'topCenter',
+            animation: {
+                open: 'animated bounceInDown',
+                close: 'animated bounceOutUp'
+            },
+            timeout: 3000
+          }).show();
+        }
       )
   }
 
@@ -121,8 +158,30 @@ export class AuthService {
     // Make the patch request to URL, add the password data and token from Config.
     this.http.patch(environment.apiServer + '/change-password/' + this.user.id, passwords, config)
       .subscribe(
-        data => console.log('Success'),
-        err => console.log(err)
+        data => {
+          new Noty({
+            type: 'success',
+            text: 'Changed your password!',
+            layout: 'topCenter',
+            animation: {
+                open: 'animated bounceInDown',
+                close: 'animated bounceOutUp'
+            },
+            timeout: 3000
+          }).show();
+        },
+        err => {
+          new Noty({
+            type: 'error',
+            text: 'Couldn\'t change your password...',
+            layout: 'topCenter',
+            animation: {
+                open: 'animated bounceInDown',
+                close: 'animated bounceOutUp'
+            },
+            timeout: 3000
+          }).show();
+        }
       )
   }
 }

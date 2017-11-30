@@ -1,0 +1,14 @@
+<div class="container mt-2">
+  <div class="row">
+    <h3>Sign Up</h3>
+  </div>
+  <div class="row">
+    <input [(ngModel)]="newUser.email" type="text" placeholder="Email"/>
+    <input [(ngModel)]="newUser.password" type="password" placeholder="Password"/>
+    <input [(ngModel)]="newUser.password_confirmation" type="password" placeholder="Confirm Passsword"/>
+    <input (click)="signUp()" type="submit" value="Sign Up"/>
+  </div>
+  <div class="row">
+    <a routerLink="/login">Go back...</a>
+  </div>
+</div>
