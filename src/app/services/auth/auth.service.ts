@@ -38,7 +38,7 @@ export class AuthService {
     }
   }
 
-  signIn(email: string, password: string) {
+  signIn(email: string, password: string, form: any) {
     // Create the credentials object.
     let credentials = {
       'credentials': {
@@ -75,9 +75,12 @@ export class AuthService {
           }).show();
         }
       )
+      if (form) {
+        form.reset();
+      }
   }
 
-  signUp(email: string, password: string, password_confirmation: string) {
+  signUp(email: string, password: string, password_confirmation: string, form: any) {
     // Create the credentials object.
     const credentials = {
       'credentials': {
@@ -92,7 +95,7 @@ export class AuthService {
       .subscribe(
         response => {
           // Send the existing credentials back to the server to log in the new user
-          this.signIn(credentials.credentials.email, credentials.credentials.password)
+          this.signIn(credentials.credentials.email, credentials.credentials.password, null);
         },
         err => {
           new Noty({
@@ -107,6 +110,7 @@ export class AuthService {
           }).show();
         }
       )
+      form.reset();
   }
 
   signOut() {
@@ -156,32 +160,6 @@ export class AuthService {
     config['headers'] = { Authorization:'Token token=' + this.getUserToken()}
 
     // Make the patch request to URL, add the password data and token from Config.
-    this.http.patch(environment.apiServer + '/change-password/' + this.user.id, passwords, config)
-      .subscribe(
-        data => {
-          new Noty({
-            type: 'success',
-            text: 'Changed your password!',
-            layout: 'topCenter',
-            animation: {
-                open: 'animated bounceInDown',
-                close: 'animated bounceOutUp'
-            },
-            timeout: 3000
-          }).show();
-        },
-        err => {
-          new Noty({
-            type: 'error',
-            text: 'Couldn\'t change your password...',
-            layout: 'topCenter',
-            animation: {
-                open: 'animated bounceInDown',
-                close: 'animated bounceOutUp'
-            },
-            timeout: 3000
-          }).show();
-        }
-      )
+    return this.http.patch(environment.apiServer + '/change-password/' + this.user.id, passwords, config);
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 
+import * as Noty from 'noty';
+
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -17,8 +19,35 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit() {
   }
 
-  changePassword() {
-    this.auth.changePassword(this.oldPassword, this.newPassword);
+  changePassword(myForm) {
+    this.auth.changePassword(this.oldPassword, this.newPassword)
+    .subscribe(
+      data => {
+        new Noty({
+          type: 'success',
+          text: 'Changed your password!',
+          layout: 'topCenter',
+          animation: {
+              open: 'animated bounceInDown',
+              close: 'animated bounceOutUp'
+          },
+          timeout: 3000
+        }).show();
+      },
+      err => {
+        new Noty({
+          type: 'error',
+          text: 'Couldn\'t change your password...',
+          layout: 'topCenter',
+          animation: {
+              open: 'animated bounceInDown',
+              close: 'animated bounceOutUp'
+          },
+          timeout: 3000
+        }).show();
+      }
+    )
+    myForm.reset();
   }
 
 }

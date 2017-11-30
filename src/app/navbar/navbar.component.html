@@ -7,7 +7,7 @@
       <a routerLink="/restaurants" class="nav-link">Restuarants</a>
     </li>
     <li *ngIf="!isLoggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
-      <a routerLink="/login" class="nav-link">Log In</a>
+      <a routerLink="/login" class="nav-link">Sign In</a>
     </li>
     <li *ngIf="isLoggedIn && isAdmin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
       <a routerLink="/admin" class="nav-link">Admin Dashboard</a>

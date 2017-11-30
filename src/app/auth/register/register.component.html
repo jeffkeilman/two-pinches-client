@@ -3,10 +3,12 @@
     <h3>Sign Up</h3>
   </div>
   <div class="row">
-    <input [(ngModel)]="newUser.email" type="text" placeholder="Email"/>
-    <input [(ngModel)]="newUser.password" type="password" placeholder="Password"/>
-    <input [(ngModel)]="newUser.password_confirmation" type="password" placeholder="Confirm Passsword"/>
-    <input (click)="signUp()" type="submit" value="Sign Up"/>
+    <form #myForm="ngForm">
+      <input name="hack" [(ngModel)]="newUser.email" type="text" placeholder="Email"/>
+      <input name="hack2" [(ngModel)]="newUser.password" type="password" placeholder="Password"/>
+      <input name="hack3" [(ngModel)]="newUser.password_confirmation" type="password" placeholder="Confirm Passsword"/>
+      <input name="hack4" (click)="signUp(myForm)" type="submit" value="Sign Up"/>
+    </form>
   </div>
   <div class="row">
     <a routerLink="/login">Go back...</a>

@@ -3,9 +3,11 @@
     <h3>Sign In</h3>
   </div>
   <div class="row">
-    <input [(ngModel)]="user.email" type="text" placeholder="Email"/>
-    <input [(ngModel)]="user.password" type="password" placeholder="Password"/>
-    <input (click)="signIn()" type="submit" value="Log in"/>
+    <form #myForm="ngForm">
+      <input name="hack" [(ngModel)]="user.email" type="text" placeholder="Email"/>
+      <input name="hack2" [(ngModel)]="user.password" type="password" placeholder="Password"/>
+      <input name="hack3" (click)="signIn(myForm)" type="submit" value="Log in"/>
+    </form>
   </div>
   <div class="row">
     <a routerLink="/register">No account?</a>
