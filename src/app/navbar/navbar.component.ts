@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   adminSubscription: Subscription;
 
   constructor(
-    private authService: AuthService
+    private authService : AuthService
   ) { }
 
   ngOnInit() {
