@@ -70,7 +70,7 @@ export class AuthService {
             this.router.navigate(["/"]);
           }
           new Noty({
-            type: 'error',
+            type: 'success',
             text: 'Signed in!',
             layout: 'topCenter',
             animation: {
@@ -146,6 +146,16 @@ export class AuthService {
           this.loggedIn.next(false);
           this.admin.next(false);
           this.router.navigate(["/"]);
+          new Noty({
+            type: 'success',
+            text: 'Signed out!',
+            layout: 'topCenter',
+            animation: {
+                open: 'animated bounceInDown',
+                close: 'animated bounceOutUp'
+            },
+            timeout: 3000
+          }).show();
         },
         err => {
           new Noty({
