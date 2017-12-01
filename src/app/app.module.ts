@@ -17,13 +17,15 @@ import { RestaurantService } from './services/restaurant/restaurant.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NgbdCarouselConfig } from './carousel-config/carousel-config.component';
+import { SecretComponent } from './secret/secret.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    NgbdCarouselConfig
+    NgbdCarouselConfig,
+    SecretComponent
   ],
   imports: [
     BrowserModule,
